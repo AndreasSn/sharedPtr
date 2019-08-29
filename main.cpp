@@ -14,23 +14,31 @@ int main (int argc, char *argv[])
     p->Display();
     {
         SharedPtr<Person> p1 = p;
+        SharedPtr<Person> p2(new Person("kurt", 23));
+
 
         p1->Display();
         //bool b1 = p1 ; 
         bool b2 = true;
         cout <<"b2: " << b2 << endl;
 
+        if(p1 == p){
+            cout << "hej" << endl;
+        }
+        
         // Ulovligt for at bool() operatoren er sat til at være explicit. Det betyder at compilering ikke må lave en konverteren implicit. 
-        //int i(p1);
+        //int i(p1);  
         
         // Ulovligt da compare operatoren ikke er overloadet. 
         //if(p == p1){
         //    cout << "hej" << endl;
         //}
+        
+
     }
 
-    //int foo = 5;
-    //  test(&foo);
+    // int foo = 5;
+    //   test(&foo);
 
 
 }

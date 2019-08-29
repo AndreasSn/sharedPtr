@@ -13,7 +13,6 @@ public:
         counter = new referenceCounter();
         counter->incCount();
         std::cout << "This is the constructor, count is " << counter->getCount() << std::endl;
-
     };
 
     // Making the constructor explicit to avoid the compiler try to convert stuff.
@@ -39,8 +38,6 @@ public:
     // tjek Reference :  https://www.kdab.com/explicit-operator-bool/
     explicit operator bool() const { return true; }
 
-
-
     SharedPtr(const SharedPtr<T>& sp) : pData(sp.pData), counter(sp.counter)
     {
         // Copy constructor
@@ -61,6 +58,10 @@ public:
         std::cout << "This is the destructor, count is " << counter->getCount() << std::endl;
         
     };
+
+    bool operator==(SharedPtr<T> &sp ){
+        return pData == sp.pData;
+    }
 
     T & operator*(){return *pData;};
     T * operator->(){return pData;};    
